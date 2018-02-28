@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Change a map's style</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<style>
+    #menu {
+        position: absolute;
+        background: #fff;
+        padding: 10px;
+        font-family: 'Open Sans', sans-serif;
+    }
+</style>
+
+<div id='map'></div>
+<div id='menu'>
+    <input id='cje40kclse2h02sscw4jzx954' type='radio' name='rtoggle' value='cje40kclse2h02sscw4jzx954' checked='checked'>
+    <label for='cje40kclse2h02sscw4jzx954'>Base circle</label>
+    <input id='cje750n0igzbp2rt5dtfjcp0t' type='radio' name='rtoggle' value='cje750n0igzbp2rt5dtfjcp0t'>
+    <label for='cje750n0igzbp2rt5dtfjcp0t'>White circle</label>
+    <input id='cje753egfgz252rmtej315czj' type='radio' name='rtoggle' value='cje753egfgz252rmtej315czj'>
+    <label for='cje753egfgz252rmtej315czj'>Color circle</label>
+    <input id='cje75gvtegzhe2sr3367pwe33' type='radio' name='rtoggle' value='cje75gvtegzhe2sr3367pwe33'>
+    <label for='cje75gvtegzhe2sr3367pwe33'>Color white circle</label>
+    <input id='cje71ry92gw1y2sr3d81amy4m' type='radio' name='rtoggle' value='cje71ry92gw1y2sr3d81amy4m'>
+    <label for='cje71ry92gw1y2sr3d81amy4m'>Glyph</label>
+    <input id='cje71he7hgvng2rmx9jr151tz' type='radio' name='rtoggle' value='cje71he7hgvng2rmx9jr151tz'>
+    <label for='cje71he7hgvng2rmx9jr151tz'>Rectangle</label>
+</div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoibmF2aWdhdGlvbm1hcCIsImEiOiJjajdpeXV5bmsxd3o1MndvMmI3YW9uN2MzIn0.j1jNy4T7WkerOCWEfL7iIA';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/navigationmap/cje40kclse2h02sscw4jzx954',
+    zoom: 17,
+    center: [-122.415,37.785]
+});
+
+var layerList = document.getElementById('menu');
+var inputs = layerList.getElementsByTagName('input');
+
+function switchLayer(layer) {
+    var layerId = layer.target.id;
+    map.setStyle('mapbox://styles/navigationmap/' + layerId);
+}
+
+for (var i = 0; i < inputs.length; i++) {
+    inputs[i].onclick = switchLayer;
+}
+</script>
+
+</body>
+</html>
